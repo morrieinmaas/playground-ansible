@@ -7,7 +7,7 @@ Ansible playbook to provision playground for PyDentity
 * Ansible installed on local machine. You can do that via pip. Using virtualenvs is recommended.
 * A running Ubuntu 20.04 machine (that you have access to) reachable over the network/on some IP.
 
-This is an Ansible version of [these notes](https://hackmd.io/@wip-abramson/BkD06KGq_). 
+This provisions an Ubuntu ec2 box for [the cloudapi project](https://github.com/didx-xyz/aries-cloudapi-python). 
 
 Instructions to run the playbooks are located in the top comment in the playbook itself. 
 

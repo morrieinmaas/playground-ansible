@@ -21,15 +21,15 @@
     remote_src: yes
     mode: 0777
 
-- name: Clone playground repo
+- name: Clone cloudapi repo
   ansible.builtin.git:
-    repo: 'https://github.com/wip-abramson/aries-jupyter-playground'
-    dest: /home/{{ username }}/aries-jupyter-playground
+    repo: 'https://github.com/didx-xyz/aries-cloudapi-python'
+    dest: /home/{{ username }}/aries-cloudapi-python
     update: no
 
 - name: Own directory
   file:
-    path: "/home/{{ username }}/aries-jupyter-playground"
+    path: "/home/{{ username }}/aries-cloudapi-python"
     state: directory
     owner: "{{ username }}"
     group: wheel
@@ -37,18 +37,3 @@
     recurse: yes
   become: yes
 
-- name: Prepare env vars
-  ansible.builtin.copy:
-    src: /home/{{ username }}/aries-jupyter-playground/playground/{{ item.name }}/{{ item.path }}
-    dest: /home/{{ username }}/aries-jupyter-playground/playground/{{ item.name }}/.env
-    owner: "{{ username }}"
-    group: wheel
-    remote_src: yes
-  with_items:
-    - '{{ env_paths }}'
-
-- name: Allow port range 8888:8890
-  community.general.ufw:
-    rule: allow
-    port: 8888:8890
-    proto: tcp
